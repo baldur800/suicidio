@@ -1,0 +1,29 @@
+```{r}
+link="https://worldpopulationreview.com/country-rankings/suicide-rate-by-country"
+path='//*[@id="dataTable"]/div[1]/div/div[1]/div/div[2]/div[2]'
+
+suic=htmltab(doc = link, 
+              which = path, #herramientas de desarrollador
+              encoding = "UTF-8")
+View(suic)
+```
+
+```{r}
+suic=suic[,-c(2,4,5,6)]
+```
+
+```{r}
+names(suic)
+```
+
+```{r}
+names(suic)[names(suic)=="Total Suicide Rate"]="suicidio" 
+```
+
+```{r}
+suic$suicidio=as.numeric(suic$suicidio)
+```
+```{r}
+str(suic)
+```
+
